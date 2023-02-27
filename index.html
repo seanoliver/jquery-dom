@@ -74,7 +74,36 @@
 </div>
 <script src="https://unpkg.com/jquery"></script>
 <script>
-  // Add your code here!
+  $("article > img").addClass("image-center");
+  $("article > p").last().remove();
+
+  const randomSize = Math.floor(Math.random() * 100);
+  $("h1").css("font-size", randomSize);
+  console.log("randomSize", randomSize);
+
+  const newListItem = $("<li>It's a puppy in a cuppy!</li>");
+  $("ol").append(newListItem);
+
+  $("aside")
+    .empty()
+    .append(`<p>Consequuntur porro, nobis placeat, labore magni aliquam
+        repellendus consequatur hic facere, molestiae dolorum suscipit
+        quos sint, minima Quibusdam voluptatem est hic, corporis.
+        Officiis delectus, consectetur harum reiciendis perferendis.</p>`);
+
+
+  const inputFields = $("input");
+  const newBgColor = `rgb(${$("input")["0"].value}, ${$("input")["1"].value}, ${$("input")["2"].value})`;
+
+  function changeBackground (evt) {
+    const newBgColor = `rgb(${$("input")["0"].value}, ${$("input")["1"].value}, ${$("input")["2"].value})`;
+    $("body").css("background-color", newBgColor);
+  }
+
+  $("input").on("change", changeBackground);
+
+  $("img").on("click", evt => evt.target.remove());
+
 </script>
 </body>
 
