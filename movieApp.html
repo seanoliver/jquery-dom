@@ -39,19 +39,19 @@
 
    let titleVal = $("#titleInput").val();
    let ratingVal = $("#ratingInput option:selected").text();
+   const randNum = Math.floor(Math.random() * 10000);
 
-
-   $("#movies").append(`<div id="${titleVal}Movie">
+   $("#movies").append(`<div id="${randNum}">
       Movie Title: ${titleVal},
       Movie Rating: ${ratingVal}
-      <button id="deleteButton${titleVal}">Remove</button>
+      <button id="deleteButton${randNum}">Remove</button>
     </div>`);
 
   function removeMovie(evt) {
-    $(`#${titleVal}Movie`).remove();
+    $(`#${randNum}`).remove();
   }
 
-  $(`#deleteButton${titleVal}`).on("click", removeMovie);
+  $(`#deleteButton${randNum}`).on("click", removeMovie);
 
   $("#titleInput").val("");
 
