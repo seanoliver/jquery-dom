@@ -30,18 +30,9 @@
 <div id="movies">
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-  <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.3.js"
+    integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+    crossorigin="anonymous"></script>
   <script>
    $(".movieInfo").submit(function (evt) {
     evt.preventDefault();
@@ -50,8 +41,19 @@
    let ratingVal = $("#ratingInput option:selected").text();
 
 
-   $("#movies").append(`<div id="${titleVal}Movie"> Movie Title: ${titleVal}, Movie Rating: ${ratingVal} <button id="#deleteButton${titleVal}">Remove</button> </div>`)
+   $("#movies").append(`<div id="${titleVal}Movie">
+      Movie Title: ${titleVal},
+      Movie Rating: ${ratingVal}
+      <button id="deleteButton${titleVal}">Remove</button>
+    </div>`);
 
+  function removeMovie(evt) {
+    $(`#${titleVal}Movie`).remove();
+  }
+
+  $(`#deleteButton${titleVal}`).on("click", removeMovie);
+
+  $("#titleInput").val("");
 
   });
   </script>
