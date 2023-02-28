@@ -81,8 +81,8 @@
   $("h1").css("font-size", randomSize);
   console.log("randomSize", randomSize);
 
-  const newListItem = $("<li>It's a puppy in a cuppy!</li>");
-  $("ol").append(newListItem);
+  const $newListItem = $("<li>It's a puppy in a cuppy!</li>");
+  $("ol").append($newListItem);
 
   $("aside")
     .empty()
@@ -91,12 +91,12 @@
         quos sint, minima Quibusdam voluptatem est hic, corporis.
         Officiis delectus, consectetur harum reiciendis perferendis.</p>`);
 
-
-  const inputFields = $("input");
-  const newBgColor = `rgb(${$("input")["0"].value}, ${$("input")["1"].value}, ${$("input")["2"].value})`;
-
   function changeBackground (evt) {
-    const newBgColor = `rgb(${$("input")["0"].value}, ${$("input")["1"].value}, ${$("input")["2"].value})`;
+    const $red = $("input").eq(0).val();
+    const $blue = $("input").eq(1).val();
+    const $green = $("input").eq(2).val();
+
+    const newBgColor = `rgb(${$red}, ${$green}, ${$blue})`;
     $("body").css("background-color", newBgColor);
   }
 
