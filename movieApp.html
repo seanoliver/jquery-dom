@@ -1,61 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MovieApp</title>
 </head>
+
 <body>
   <form action="#" class="movieInfo">
     <div class="movieTitleInput">
       <label for="titleInput">Movie Title</label>
-      <input id="titleInput"  type="text" placeholder="Movie Title" required >
+      <input id="titleInput" type="text" placeholder="Movie Title" required>
 
     </div>
-<div class="movieRatingInput" >
-  <label for="ratingInput">Movie Rating</label>
-  <select id="ratingInput">
-    <option value="Perfect">Perfect</option>
-    <option value="Great">Great</option>
-    <option value="Good">Good</option>
-    <option value="Meh">Meh</option>
-    <option value="LiteralShit">Literal Shit</option>
-  </select>
-</div>
-<button class="movieInfoSubmit">Submit!</button>
+    <div class="movieRatingInput">
+      <label for="ratingInput">Movie Rating</label>
+      <select id="ratingInput">
+        <option value="Perfect">Perfect</option>
+        <option value="Great">Great</option>
+        <option value="Good">Good</option>
+        <option value="Meh">Meh</option>
+        <option value="LiteralShit">Literal Shit</option>
+      </select>
+    </div>
+    <button class="movieInfoSubmit">Submit!</button>
 
   </form>
 
-<div id="movies">
+  <div id="movies">
 
-</div>
-  <script src="https://code.jquery.com/jquery-3.6.3.js"
-    integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
     crossorigin="anonymous"></script>
   <script>
-   $(".movieInfo").submit(function (evt) {
-    evt.preventDefault();
+    // break out each atomic function
+    $(".movieInfo").submit(function (evt) {
+      evt.preventDefault();
 
-   let titleVal = $("#titleInput").val();
-   let ratingVal = $("#ratingInput option:selected").text();
-   const randNum = Math.floor(Math.random() * 10000);
+      let titleVal = $("#titleInput").val();
+      let ratingVal = $("#ratingInput option:selected").text();
+      const randNum = Math.floor(Math.random() * 10000);
 
-   $("#movies").append(`<div id="${randNum}">
+      $("#movies").append(`<div id="${randNum}">
       Movie Title: ${titleVal},
       Movie Rating: ${ratingVal}
       <button id="deleteButton${randNum}">Remove</button>
     </div>`);
 
-  function removeMovie(evt) {
-    $(`#${randNum}`).remove();
-  }
+      // find enclosing div relative to click event target
+      function removeMovie(evt) {
+        $(`#${randNum}`).remove();
+      }
 
-  $(`#deleteButton${randNum}`).on("click", removeMovie);
+      $(`#deleteButton${randNum}`).on("click", removeMovie);
 
-  $("#titleInput").val("");
+      $("#titleInput").val("");
 
-  });
+    });
   </script>
 </body>
+
 </html>
